@@ -1,0 +1,15 @@
+class Solution {
+    public int cutRod(int[] price) {
+    int n = price.length;
+    int[] dp = new int[n + 1];  // dp[i] = max price for rod of length i
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = i; j <= n; j++) {
+            dp[j] = Math.max(dp[j], price[i - 1] + dp[j - i]);
+        }
+    }
+
+    return dp[n];
+
+    }
+}
